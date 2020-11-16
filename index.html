@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body{
+            background-image: url('img/earthbound-logo-icon.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .earthbound-left {
+            background-image: url('img/ness.png');
+            height: 1000px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: red;
+        }
+
+        .mother-3-right {
+            background-image: url('img/Lucas.png');
+            height: 1000px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: orange;
+            vertical-align: middle;
+        }
+
+        .mother-3-logo {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 480px;
+            display: block;
+        }
+
+        .earthbound-logo {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 430px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-6 earthbound-left">
+            <img class="earthbound-logo" src="img/earthbound-logo.png" height="150" width="500" alt="">
+        </div>
+        <div class="col-lg-6 mother-3-right">
+            <img class="mother-3-logo" src="img/mother-3-logo.png" height="100" width="500" alt="">
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
+    <script>
+
+        const earthboundLeft = document.querySelector('.earthbound-left');
+        const earthboundLogo = document.querySelector('.earthbound-logo');
+
+        const mother3Right = document.querySelector('.mother-3-right');
+        const mother3Logo = document.querySelector('.mother-3-logo');
+
+        earthboundLeft.onmouseover = function(){
+            TweenLite.to(earthboundLeft, .2, {css:{opacity:0.75}});
+        }
+        mother3Right.onmouseover = function(){
+            TweenLite.to(mother3Right, .2, {css:{opacity: 0.75}});
+        }
+
+        earthboundLeft.onmouseout = function(){
+            TweenLite.to(earthboundLeft, .2, {css:{opacity:1}});
+        }
+        mother3Right.onmouseout = function(){
+            TweenLite.to(mother3Right, .2, {css:{opacity:1}});
+        }
+
+        gsap.from('.earthbound-left', {y: '-200vh', delay: .5});
+        gsap.from('.mother-3-right', {y: '200vh', delay: .7});
+
+        gsap.fromTo('.earthbound-logo',
+        {x: '200rem', opacity: 0},
+        {x: 0, opacity: 1, ease: 'back.out(1.7)', delay:1.0});
+
+        gsap.fromTo('.mother-3-logo',
+        {x: '-100rem', opacity: 0},
+        {x: 0, opacity: 1, ease: 'back.out(1.7)', delay:1.0});
+    </script>
+</body>
+</html>
