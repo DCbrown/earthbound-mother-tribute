@@ -13,6 +13,12 @@
             background-position: center;
         }
 
+        html, body {
+            margin: 0; 
+            height: 100%; 
+            overflow: hidden
+        }
+
         .earthbound-left {
             background-image: url('img/ness.png');
             height: 1000px;
@@ -33,7 +39,7 @@
         .mother-3-logo {
             margin-left: auto;
             margin-right: auto;
-            margin-top: 480px;
+            margin-top: 460px;
             display: block;
         }
 
@@ -43,25 +49,122 @@
             margin-top: 430px;
             display: block;
         }
+
+        .eb-box{
+            height: 350px;
+        }
+
+        .eb-container {
+            margin-top: 50px;
+            opacity: 0;
+        }
+
+        .m3-container {
+            margin-top: 50px;
+            opacity: 0;
+        }
+
+        .eb-info {
+            border-radius: 15px 50px;
+            background-color: rgba(255, 0, 0, 0.9);  
+            padding: 3%;
+            color: white;
+            border: 3px solid black;
+            height: 475px;
+        }
+
+        .m3-info {
+            border-radius: 15px 50px;
+            background-color: rgba(255,165,0, 0.9);  
+            padding: 3%;
+            color: white;
+            border: 3px solid black;
+            height: 670px;
+        }
+
+        .chars-info {
+            margin: 0 70px;
+        }
+        .chars-info-text {
+            margin: 0 100px;
+        }
     </style>
 </head>
 <body>
-    <div class="row">
-        <div class="col-lg-6 earthbound-left">
+    <div class="row intro-row">
+        <div onclick="showEB()" class="col-lg-6 earthbound-left">
             <img class="earthbound-logo" src="img/earthbound-logo.png" height="150" width="500" alt="">
         </div>
-        <div class="col-lg-6 mother-3-right">
+        <div onclick="showM3()" class="col-lg-6 mother-3-right">
             <img class="mother-3-logo" src="img/mother-3-logo.png" height="100" width="500" alt="">
+        </div>
+    </div>
+    <div class="container eb-container">
+        <button onclick="goBack()" type="button" class="btn btn-secondary mb-3">Go Back</button>
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="eb-box mb-5" src="img/EarthBound_Box.jpg" alt="">
+                <iframe width="500" height="315" src="https://www.youtube.com/embed/jOsxUAQt9Nw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-lg-6 eb-info">
+                <h2>US: Earthbound - JPN: Mother 2</h2>
+                <h3>JPN: August 27, 1994</h3>
+                <h3>US: June 1, 1995</h3>
+                <h3>Genre: Role-playing game</h3>
+                <h3>EarthBound chronicles the adventures of Ness, a 13-year-old boy who journeys around the world using his "PK" or "PSI" to collect eight melodies in order to save the future from an alien of pure evil, intending to sentence all of reality to the horror of eternal darkness.</h3>
+            </div>
+        </div>
+        
+        
+       
+        <!--
+        <div class="container eb-info">
+            <h2 class="text-center">Main Characters</h2>
+            <div class="row">
+                <h3 class="chars-info-text">Ness</h3>
+                <h3 class="chars-info-text">Puala</h3>
+                <h3 class="chars-info-text">Jeff</h3>
+                <h3 class="chars-info-text">Poo</h3>
+            </div>
+            <div class="row">
+                <img class="chars-info" src="img/eb-characters/ness.png" height="200" alt="">
+                <img class="chars-info" src="img/eb-characters/paula.png" height="200" alt="">
+                <img class="chars-info" src="img/eb-characters/jeff.png" height="200" alt="">
+                <img class="chars-info" src="img/eb-characters/poo.png" height="200" alt="">
+            </div>
+        </div>
+        -->
+    </div>
+
+    <div class="container m3-container">
+        <button onclick="goBack()" type="button" class="btn btn-secondary mb-3">Go Back</button>
+        <div class="row">
+            <div class="col-lg-6">
+                <img class="eb-box mb-5" src="img/mother_box.jpg" alt="">
+                <iframe width="530" height="315" src="https://www.youtube.com/embed/sad7n5EJJfA?start=632" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="col-lg-6 m3-info">
+                <h2>Mother 3</h2>
+                <h3>April 20, 2006 (Japan Only)</h3>
+                <h3>Genre: Role-playing game</h3>
+                <h3>Mother 3 is set in the Nowhere Islands, some unknown amount of years after EarthBound. Chaos ensues after an invasion by the Pigmask Army, named after the uniforms, which resemble pigs, and its leader, Porky Minch, the "Pig King". They slowly construct a police state, while experimenting on the land's flora and fauna, and introducing new technology and infrastructure to the islands. The various chapters record the life of a boy named Lucas and his family and friends, banding together to rid the Nowhere Islands of the Pigmask Army.</h3>
+            </div>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" crossorigin="anonymous"></script>
     <script>
 
+        // Intro    
         const earthboundLeft = document.querySelector('.earthbound-left');
         const earthboundLogo = document.querySelector('.earthbound-logo');
 
         const mother3Right = document.querySelector('.mother-3-right');
         const mother3Logo = document.querySelector('.mother-3-logo');
+        const introRow = document.querySelector('.row');
+      
+
+        const containerEB = document.querySelector('.eb-container');
+        const containerM3 = document.querySelector('.m3-container');
 
         earthboundLeft.onmouseover = function(){
             TweenLite.to(earthboundLeft, .2, {css:{opacity:0.75}});
@@ -78,7 +181,7 @@
         }
 
         gsap.from('.earthbound-left', {y: '-200vh', delay: .5});
-        gsap.from('.mother-3-right', {y: '200vh', delay: .7});
+        gsap.from('.mother-3-right', {y: '-200vh', delay: .7});
 
         gsap.fromTo('.earthbound-logo',
         {x: '200rem', opacity: 0},
@@ -87,6 +190,37 @@
         gsap.fromTo('.mother-3-logo',
         {x: '-100rem', opacity: 0},
         {x: 0, opacity: 1, ease: 'back.out(1.7)', delay:1.0});
+
+        // Outro Clicked
+        function showEB() {
+            gsap.to('.earthbound-left', {y: '-300vh', delay: .5});
+            gsap.to('.mother-3-right', {y: '-300vh', delay: .7});
+            gsap.to('intro-row', {y: '-300vh', delay: .8});
+            setTimeout(function(){
+                introRow.style.display = "none";
+                TweenLite.to(containerEB, .2, {css:{opacity:1}});
+                TweenLite.to(containerM3, .2, {css:{opacity:0}});
+            },900);
+            
+        }
+
+        function showM3() {
+            gsap.to('.earthbound-left', {y: '-300vh', delay: .5});
+            gsap.to('.mother-3-right', {y: '-300vh', delay: .7});
+            gsap.to('intro-row', {y: '-300vh', delay: .8});
+            setTimeout(function(){
+                introRow.style.display = "none";
+                containerEB.style.display = "none";
+                TweenLite.to(containerEB, .2, {css:{opacity:0}});
+                TweenLite.to(containerM3, .2, {css:{opacity:1}});
+            },900);
+            
+        }
+
+        function goBack() {
+            location.reload();
+        }
+        
     </script>
 </body>
 </html>
