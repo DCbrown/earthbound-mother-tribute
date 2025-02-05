@@ -307,7 +307,29 @@
 
       // Go Back
       function goBack() {
-        location.reload();
+        // Fade out current container
+        gsap.to([containerEB, containerM3], {
+          opacity: 0,
+          duration: 0.5,
+          onComplete: () => {
+            // Reset displays
+            containerEB.style.display = "none";
+            containerM3.style.display = "none";
+            introRow.style.display = "flex";
+
+            // Animate elements back in
+            gsap.fromTo(
+              ".earthbound-left",
+              { y: "-300vh" },
+              { y: 0, duration: 1, ease: "power2.out" }
+            );
+            gsap.fromTo(
+              ".mother-3-right",
+              { y: "-300vh" },
+              { y: 0, duration: 1, delay: 0.2, ease: "power2.out" }
+            );
+          },
+        });
       }
     </script>
   </body>
